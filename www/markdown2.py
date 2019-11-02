@@ -5,6 +5,11 @@
 
 from __future__ import generators
 
+import codecs
+import optparse
+from random import randint, random
+
+
 r"""A fast and complete Python implementation of Markdown.
 
 [from http://daringfireball.net/projects/markdown/]
@@ -94,13 +99,10 @@ import sys
 from pprint import pprint, pformat
 import re
 import logging
-# try:
-from hashlib import md5
-# except ImportError:
-#     from md5 import md5
-import optparse
-from random import random, randint
-import codecs
+try:
+    from hashlib import md5
+except ImportError:
+    pass
 
 
 #---- Python version compat
@@ -111,7 +113,6 @@ except ImportError:
     from urllib import quote # python2
 
 if sys.version_info[:2] < (2,4):
-    from sets import Set as set
     def reversed(sequence):
         for i in sequence[::-1]:
             yield i
